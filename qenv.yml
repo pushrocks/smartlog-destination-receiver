@@ -1,0 +1,3 @@
+vars:
+  - RECEIVER_ENDPOINT
+  - PASSPHRASE

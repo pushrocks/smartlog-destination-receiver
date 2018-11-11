@@ -17,10 +17,13 @@ export class SmartlogDestinationReceiver implements ILogDestination {
     this.options = optionsArg;
   }
 
-  handleLog(logPackageArg: ILogPackage) {
-    plugins.smartrequest.postJson(this.options.receiverEndpoint, <ILogPackageAuthenticated>{
-      auth: this.options.passphrase,
-      logPackage: logPackageArg
+  public async handleLog(logPackageArg: ILogPackage) {
+    const response = await plugins.smartrequest.postJson(this.options.receiverEndpoint, {
+      requestBody: {
+        auth: plugins.smarthash.sha256FromStringSync(this.options.passphrase),
+        logPackage: logPackageArg
+      }
     });
+    console.log(response.body);
   }
 }
