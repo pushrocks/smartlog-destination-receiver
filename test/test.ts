@@ -9,8 +9,8 @@ let testSmartlogReceiver: smartlogDestinationReceiver.SmartlogDestinationReceive
 
 tap.test('should create a valid SmartlogDestinationReceiver', async () => {
   testSmartlogReceiver = new smartlogDestinationReceiver.SmartlogDestinationReceiver({
-    receiverEndpoint: process.env.RECEIVER_ENDPOINT,
-    passphrase: process.env.PASSPHRASE
+    receiverEndpoint: testQenv.getEnvVarOnDemand("RECEIVER_ENDPOINT"),
+    passphrase: testQenv.getEnvVarOnDemand("PASSPHRASE")
   });
 });
 
@@ -20,14 +20,18 @@ tap.test('should send a valid message', async () => {
     context: {
       company: 'Lossless GmbH',
       companyunit: 'Lossless Cloud',
-      containerName: null,
+      containerName: 'tapbundle-test',
       environment: 'local',
       runtime: 'node',
       zone: 'gitzone'
     },
     type: 'log',
     level: 'info',
-    message: 'This is a message'
+    correlation: {
+      id: '123',
+      type: 'none'
+    },
+    message: 'This is a message',
   });
 });
 
