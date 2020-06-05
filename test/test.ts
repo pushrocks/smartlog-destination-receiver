@@ -27,7 +27,7 @@ tap.test('should send a valid message', async () => {
     },
     type: 'log',
     level: 'info',
-    message: 'This is a message',
+    message: 'This is a message'
   });
 });
 
