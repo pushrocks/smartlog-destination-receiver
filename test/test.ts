@@ -9,8 +9,8 @@ let testSmartlogReceiver: smartlogDestinationReceiver.SmartlogDestinationReceive
 
 tap.test('should create a valid SmartlogDestinationReceiver', async () => {
   testSmartlogReceiver = new smartlogDestinationReceiver.SmartlogDestinationReceiver({
-    receiverEndpoint: testQenv.getEnvVarOnDemand("RECEIVER_ENDPOINT"),
-    passphrase: testQenv.getEnvVarOnDemand("PASSPHRASE")
+    receiverEndpoint: testQenv.getEnvVarOnDemand('RECEIVER_ENDPOINT'),
+    passphrase: testQenv.getEnvVarOnDemand('PASSPHRASE')
   });
 });
 
@@ -31,7 +31,7 @@ tap.test('should send a valid message', async () => {
       id: '123',
       type: 'none'
     },
-    message: 'This is a message',
+    message: 'This is a message'
   });
 });
 
