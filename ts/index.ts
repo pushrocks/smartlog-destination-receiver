@@ -24,6 +24,6 @@ export class SmartlogDestinationReceiver implements ILogDestination {
         logPackage: logPackageArg
       }
     });
-    // console.log(response.body);
+    return response.body;
   }
 }
